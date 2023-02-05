@@ -31,7 +31,7 @@ export default class GameBoard {
         if (this.gameCompleted) return; 
 
         const value = this.#isPlayer1 ? 'X' : 'O';
-        const color = this.#isPlayer1 ? 'purple' : 'orange';
+        const color = this.#isPlayer1 ? '#fff' : '#f5f55f';
         cell.cellElement.style.setProperty("--color", color)
         cell.cellElement.textContent = value;
         cell.val = value;
@@ -60,14 +60,14 @@ export default class GameBoard {
             let rowState = '';
             let colState = '';
             for(let j = 0; j < this.#SIZE; j++) {
-                rowState += this.cellsByRow[i][j].val;
-                colState += this.cellsByRow[j][i].val;
+                rowState += this.cellsByRow[i][j].val || "-";
+                colState += this.cellsByRow[j][i].val || "-";
             }
             allPossibleStates.push(rowState);
             allPossibleStates.push(colState);
 
-            leftDiagonal += this.cellsByRow[i][i].val;
-            rightDiagonal += this.cellsByRow[i][this.#SIZE - i - 1].val;
+            leftDiagonal += this.cellsByRow[i][i].val || "-";
+            rightDiagonal += this.cellsByRow[i][this.#SIZE - i - 1].val || "-";
         }
 
         allPossibleStates.push(leftDiagonal);
@@ -78,7 +78,7 @@ export default class GameBoard {
     checkForWinningCondition() {
         const states = this.states;
         console.log(states);
-        return states.indexOf("XXX") > 0 ? "Player 1" : states.indexOf("OOO") > 0 ? "Player 2" : "None"
+        return states.indexOf("XXX") >= 0 ? "Player 1" : states.indexOf("OOO") >= 0 ? "Player 2" : "None"
     }
 
     get checkForAllFilledState() {
@@ -102,5 +102,12 @@ export default class GameBoard {
             cellGrid[currentCell.y][currentCell.x] = currentCell;
             return cellGrid
         }, [])
+    }
+
+    restart() {
+        this.#cells.forEach(cell => {
+            cell.cellElement.remove();
+        });
+        this.#cells = null;
     }
 }

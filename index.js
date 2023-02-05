@@ -16,6 +16,14 @@ function setUpEventListeners(game) {
     cells.forEach(cell => {
         cell.cellElement.addEventListener("click", () => cellEventListener(game, cell), {once: true});
     });
+
+    document.querySelector("[data-new-game]").addEventListener("click", newGame);
+}
+
+function newGame() {
+    document.querySelector("[data-new-game]").style.display = "none";
+    game.restart();
+    init();
 }
 
 function cellEventListener(game, cell) {    
@@ -28,6 +36,8 @@ function cellEventListener(game, cell) {
     if (gameConditon !== "None" ) {
         console.log(gameConditon);
         game.gameCompleted = true;
+
+        document.querySelector("[data-new-game]").style.display = "flex";
     }
 }
 

@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
-    font-family: Arial;
+    /* font-family: Arial; */
+    font-family: 'Varela Round', sans-serif;
 }
 
 body {
-    background-color: #333;
+    background-color: cornsilk;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,29 +23,143 @@ body {
 .game-board {
 
     --cell-size: 20vmin;
-    --cell-gap: 1vmin;
+    --cell-gap: 0.01vmin;
     --cell-count: 3;
 
     position: relative;
     display: grid;
     width: fit-content;
     margin: 0 auto;
-    font-size: 7.5vmin;
+    font-size: 10vmin;
     grid-template-columns: repeat(var(--cell-count), var(--cell-size));
     grid-template-rows: repeat(var(--cell-count), var(--cell-size));
-    background-color: #ccc;
-    padding: var(--cell-gap);
+    /* background-color: #ccc; */
+    /* padding: var(--cell-gap); */
     gap: var(--cell-gap);
     border-radius: 1vmin;
+
+    position: relative;
 }
 
 .cell {
-    background-color: #aaa;
-    border-radius: 1vmin;
+    background-color: #e4482d;
+    border-radius: 0.5vmin;
 
     display: flex;
     justify-content: center;
     align-items: center;
     color: var(--color);
     font-weight: 700;
+}
+
+
+.header {
+    color: #fff;
+    display: flex;
+    font-size: 2rem;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 4vmin auto;
+}
+
+.header div {
+    flex: 1;
+}
+
+.game-world {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.new-game {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.new-game .btn {
+    padding: 0.75rem 1rem;
+    background-color: #f5f55f;
+    color: #454;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    z-index: 2;
+
+    align-self: end;
+
+    position: relative;
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+    font-size: 1.75rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation: zoom-in-out ease 2s infinite;
+
+    display: none;
+}
+
+@keyframes zoom-in-out {
+    0% {
+        transform: scale(1);
+    }
+    
+    50% {
+        transform: scale(1.25);
+    }
+    
+    100% {
+        transform: scale(1);
+    }
+}
+
+.score {
+    text-align: end;
+}
+
+.model {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 7.5vmin;
+
+    display: none;
+    z-index: 1;
+}
+
+.card {
+    background: #fff;
+    padding: 1rem 2rem;
+    border-radius: 2px;
+    /* width: 5rem;
+    height: 5rem; */
+
+    box-shadow: 1px 0px 9px 1px rgba(0, 0, 0, 0.54);
+    -webkit-box-shadow: 1px 0px 9px 1px rgba(0, 0, 0, 0.54);
+    -moz-box-shadow: 1px 0px 9px 1px rgba(0, 0, 0, 0.54);
+}
+
+.logo {
+    font-size: 5rem;
+    text-align: center;
+    font-weight: 600;
+
+    color: #454;
 }
