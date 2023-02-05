@@ -31,13 +31,12 @@ function cellEventListener(game, cell) {
     if (game.checkForAllFilledState) {
         console.log("Still empty");
     }
-    const gameConditon = game.checkForWinningCondition();
-    console.log(gameConditon);
-    if (gameConditon !== "None" ) {
-        console.log(gameConditon);
+    const gameConditon = game.checkForWinningCondition();    
+    if (gameConditon !== "None" ) {        
         game.gameCompleted = true;
 
         document.querySelector("[data-new-game]").style.display = "flex";
+        document.querySelector("[data-win-info]").textContent = `${gameConditon} won the game!`;
     }
 }
 

@@ -163,3 +163,12 @@ body {
 
     color: #454;
 }
+
+.winning-info {
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+    font-size: 1.75rem;
+
+    text-decoration: wavy;
+}
