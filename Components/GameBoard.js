@@ -66,8 +66,8 @@ export default class GameBoard {
             allPossibleStates.push(rowState);
             allPossibleStates.push(colState);
 
-            leftDiagonal += this.cellsByRow[i][i];
-            rightDiagonal += this.cellsByRow[i][this.#SIZE - i - 1];
+            leftDiagonal += this.cellsByRow[i][i].val;
+            rightDiagonal += this.cellsByRow[i][this.#SIZE - i - 1].val;
         }
 
         allPossibleStates.push(leftDiagonal);
@@ -77,7 +77,8 @@ export default class GameBoard {
 
     checkForWinningCondition() {
         const states = this.states;
-        return states.indexOf("XXX") > 0 ? "Player 1" : states.indexOf("OOO") > 1 ? "Player 2" : "None"
+        console.log(states);
+        return states.indexOf("XXX") > 0 ? "Player 1" : states.indexOf("OOO") > 0 ? "Player 2" : "None"
     }
 
     get checkForAllFilledState() {
