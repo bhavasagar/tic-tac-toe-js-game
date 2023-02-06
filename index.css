@@ -59,9 +59,8 @@ body {
     font-size: 2rem;
     flex-direction: row;
     width: 100%;
-    justify-content: space-evenly;
     align-items: center;
-    margin: 4vmin auto;
+    margin: 2vmin auto;
 }
 
 .header div {
@@ -171,4 +170,11 @@ body {
     font-size: 1.75rem;
 
     text-decoration: wavy;
+}
+.players {
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+    margin: 1rem auto;
 }
